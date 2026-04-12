@@ -1,5 +1,7 @@
 export enum Page {
-  Showcase = 'showcase',
+  Home = 'Home',
   AILab = 'ai-lab',
   Customizer = 'customizer',
+  Gallery = 'gallery',
+  Contact = 'contact',
 }

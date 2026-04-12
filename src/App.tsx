@@ -3,35 +3,34 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Showcase from './pages/Showcase';
-import AILab from './pages/AILab';
+import Home from './pages/Home';
+import AILab from './pages/ThreeDModel';
 import Customizer from './pages/Customizer';
-import { Page } from './types';
+import Gallery from './pages/Gallery';
+import Contact from './pages/Contact';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<Page>(Page.Showcase);
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case Page.Showcase:
-        return <Showcase />;
-      case Page.AILab:
-        return <AILab />;
-      case Page.Customizer:
-        return <Customizer />;
-      default:
-        return <Showcase />;
-    }
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar currentPage={currentPage} onPageChange={setCurrentPage} />
+      <Navbar />
       <div className="flex-grow">
-        {renderPage()}
+        <section id="home" className="scroll-mt-20">
+          <Home />
+        </section>
+        <section id="3d-model" className="scroll-mt-20">
+          <AILab />
+        </section>
+        <section id="lithophane" className="scroll-mt-20">
+          <Customizer />
+        </section>
+        <section id="gallery" className="scroll-mt-20">
+          <Gallery />
+        </section>
+        <section id="contact" className="scroll-mt-20">
+          <Contact />
+        </section>
       </div>
       <Footer />
     </div>

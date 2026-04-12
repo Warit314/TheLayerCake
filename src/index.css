@@ -24,7 +24,7 @@
 }
 
 .industrial-gradient {
-  background: linear-gradient(135deg, #556068 0%, #4d75f9 100%);
+  background: linear-gradient(135deg, var(--color-tertiary) 0%, var(--color-tertiary-container) 100%);
 }
 
 .glass-nav {
