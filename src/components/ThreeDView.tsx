@@ -13,7 +13,7 @@ export default function ThreeDView({ children }: ThreeDViewProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="w-full h-full relative bg-surface-container-low rounded-xl overflow-hidden border border-outline-variant/20 shadow-inner"
+      className="w-full h-full relative bg-surface-container-low rounded-xl overflow-hidden"
       style={{ minHeight: '400px' }}
     >
       <div className="absolute top-4 left-4 z-10 flex gap-2">

@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
 import { Upload, Brain, Factory, CheckCircle2 } from 'lucide-react';
-
+import ThreeDView from '../components/ThreeDView';
+import SpinningModel from '../components/SpinningModel';
+import modelUrl from '../public/model.3mf?url';
 
 export default function Home() {
   return (
@@ -11,16 +13,24 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-20 text-center md:text-left"
+          className="mb-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
         >
-          <h1 className="text-6xl md:text-8xl font-black font-headline tracking-tighter mb-6 text-on-surface leading-none">
-            AI GENERATED<br />
-            <span className="text-tertiary">PRECISION</span>
-          </h1>
-          <p className="text-secondary max-w-2xl text-lg leading-relaxed">
-            Transforming your imagination into physical reality using our proprietary Siam Synth AI models.
-            From a single photo to a full-color 3D physical asset.
-          </p>
+          <div className="text-center lg:text-left">
+            <h1 className="text-6xl md:text-8xl font-black font-headline tracking-tighter mb-6 text-on-surface leading-none">
+              AI GENERATED<br />
+              <span className="text-tertiary">PRECISION</span>
+            </h1>
+            <p className="text-secondary max-w-2xl text-lg leading-relaxed">
+              Transforming your imagination into physical reality using our proprietary Siam Synth AI models.
+              From a single photo to a full-color 3D physical asset.
+            </p>
+          </div>
+
+          <div className="h-[400px] lg:h-[500px]">
+            <ThreeDView>
+              <SpinningModel modelUrl={modelUrl} />
+            </ThreeDView>
+          </div>
         </motion.section>
 
         {/* Process Timeline Section */}

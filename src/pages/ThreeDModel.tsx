@@ -120,7 +120,7 @@ export default function ThreeDModel() {
       </div>
 
       {/* Bento Grid Feature Section */}
-      <div className="max-w-7xl mx-auto px-6 mt-32">
+      {/* <div className="max-w-7xl mx-auto px-6 mt-32">
         <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[600px]">
           <div className="md:col-span-2 md:row-span-2 bg-surface-container-low rounded-xl p-10 flex flex-col justify-end relative overflow-hidden">
             <img
@@ -150,7 +150,7 @@ export default function ThreeDModel() {
             <span className="font-headline font-bold">QA Certified</span>
           </div>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }
