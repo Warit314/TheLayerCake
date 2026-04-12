@@ -2,7 +2,7 @@ import logo from '../public/image.png';
 
 const navItems = [
   { label: 'Home', href: '#home' },
-  { label: '3D Model', href: '#3d-model' },
+  { label: '3D Model', href: '#threedmodel' },
   { label: 'Lithophane', href: '#lithophane' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },

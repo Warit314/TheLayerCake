@@ -19,7 +19,7 @@ export default function App() {
         <section id="home" className="scroll-mt-20">
           <Home />
         </section>
-        <section id="3d-model" className="scroll-mt-20">
+        <section id="threedmodel" className="scroll-mt-20">
           <AILab />
         </section>
         <section id="lithophane" className="scroll-mt-20">

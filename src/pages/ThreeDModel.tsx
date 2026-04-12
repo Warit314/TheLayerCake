@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { UploadCloud, ArrowDown, Zap, ShieldCheck, Factory } from 'lucide-react';
 import ThreeDView from '../components/ThreeDView';
 import SpinningModel from '../components/SpinningModel';
-import modelUrl from '../public/model.3mf?url';
+import modelUrl from '../public/model.glb?url';
 
 export default function ThreeDModel() {
   return (
