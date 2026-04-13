@@ -1,6 +1,7 @@
 import { useRef, useMemo } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import * as THREE from 'three';
 
 interface SpinningModelProps {
@@ -10,8 +11,12 @@ interface SpinningModelProps {
 export default function SpinningModel({ modelUrl }: SpinningModelProps) {
   const groupRef = useRef<THREE.Group>(null);
 
-  // Load the GLB model
-  const gltf = useLoader(GLTFLoader, modelUrl);
+  // Load the GLB model with Draco decoder for compressed meshes
+  const gltf = useLoader(GLTFLoader, modelUrl, (loader) => {
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/');
+    loader.setDRACOLoader(dracoLoader);
+  });
 
   // Calculate bounding box, scale to fit, and center
   const scene = useMemo(() => {

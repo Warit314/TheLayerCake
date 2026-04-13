@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { Upload, Brain, Factory, CheckCircle2 } from 'lucide-react';
 import ThreeDView from '../components/ThreeDView';
 import SpinningModel from '../components/SpinningModel';
-import modelUrl from '../public/model.glb?url';
+import modelUrl from '../public/model-optimized.glb?url';
 import modelPng from '../public/model.png';
 
 export default function Home() {

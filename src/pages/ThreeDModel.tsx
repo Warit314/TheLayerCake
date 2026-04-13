@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { Zap, ShieldCheck } from 'lucide-react';
 import ThreeDView from '../components/ThreeDView';
 import SpinningModel from '../components/SpinningModel';
-import modelUrl from '../public/model.glb?url';
+import modelUrl from '../public/model-optimized.glb?url';
 
 export default function ThreeDModel() {
   return (
