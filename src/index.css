@@ -30,3 +30,42 @@
 .glass-nav {
   @apply bg-white/80 backdrop-blur-xl border-b border-slate-200/30;
 }
+
+/* ── Hero section responsive sizing ───────────────── */
+
+/* Sentinel wrapper: taller on small screens so sticky has room to scroll */
+.hero-sentinel {
+  height: 280vh;
+}
+@media (min-width: 1024px) {
+  .hero-sentinel {
+    height: 200vh;
+  }
+}
+
+/* Sticky viewport: auto-height on mobile (grid grows), fixed on lg */
+.hero-sticky {
+  min-height: 100vh;
+  height: auto;
+}
+@media (min-width: 1024px) {
+  .hero-sticky {
+    height: 100vh;
+    min-height: unset;
+  }
+}
+
+/* Model / image container */
+.hero-model-container {
+  height: 340px;
+}
+@media (min-width: 768px) {
+  .hero-model-container {
+    height: 400px;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-model-container {
+    height: 460px;
+  }
+}

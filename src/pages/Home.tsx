@@ -8,7 +8,7 @@ import modelPng from '../public/model.png';
 
 export default function Home() {
   const sentinelRef = useRef<HTMLDivElement>(null);
-  const [heroTop, setHeroTop]     = useState(0);
+  const [heroTop, setHeroTop] = useState(0);
   const [heroHeight, setHeroHeight] = useState(2000);
 
   // Measure where the sentinel lives in document coordinates
@@ -48,8 +48,8 @@ export default function Home() {
     [heroTop + heroHeight * 0.20, heroTop + heroHeight * 0.50],
     [0.88, 1]
   );
-  const photoY     = useSpring(rawPhotoY,     springConfig);
-  const modelScale = useSpring(rawModelScale,  springConfig);
+  const photoY = useSpring(rawPhotoY, springConfig);
+  const modelScale = useSpring(rawModelScale, springConfig);
 
   return (
     // NOTE: no px-6 here – the sentinel must span the full page width
@@ -60,11 +60,13 @@ export default function Home() {
       {/* position:relative is required by Framer Motion        */}
       <div
         ref={sentinelRef}
-        style={{ height: '200vh', position: 'relative' }}
+        className="hero-sentinel"
+        style={{ position: 'relative' }}
       >
         {/* Sticky panel — pins to top-0 while sentinel scrolls */}
         <div
-          style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}
+          className="hero-sticky"
+          style={{ position: 'sticky', top: 0, overflow: 'hidden' }}
         >
           {/* Content centered inside the sticky viewport */}
           <div className="max-w-screen-xl mx-auto px-6 h-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-28 pb-8">
@@ -76,11 +78,11 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="text-center lg:text-left"
             >
-              <h1 className="text-6xl md:text-8xl font-black font-headline tracking-tighter mb-6 text-on-surface leading-none">
+              <h1 className="text-4xl md:text-6xl lg:text-8xl font-black font-headline tracking-tighter mb-6 text-on-surface leading-none">
                 PRESERVE YOUR <br />
                 <span className="text-tertiary">PRECIOUS MOMENTS</span>
               </h1>
-              <p className="text-secondary max-w-2xl text-lg leading-relaxed mb-8">
+              <p className="text-secondary max-w-1xl text-sm md:text-base lg:text-lg leading-relaxed mb-8">
                 Graduations. Weddings. Career milestones. Don't just frame your
                 memories — hold them. We turn a single photograph into a vibrant,
                 full-color 3D reality.
@@ -93,7 +95,7 @@ export default function Home() {
                 className="hidden lg:flex items-center gap-2 text-xs uppercase tracking-widest text-on-surface-variant"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" strokeWidth="2">
+                  stroke="currentColor" strokeWidth="2">
                   <path d="M12 5v14M5 12l7 7 7-7" />
                 </svg>
                 Scroll to see the transformation
@@ -101,7 +103,7 @@ export default function Home() {
             </motion.div>
 
             {/* RIGHT: photo → 3D crossfade */}
-            <div className="relative" style={{ height: '460px' }}>
+            <div className="relative hero-model-container">
 
               {/* Layer 1 – flat photo (fades out, rises up) */}
               <motion.div
@@ -163,9 +165,11 @@ export default function Home() {
               </div>
               <p className="text-sm text-on-surface-variant mb-6">ทักแชทส่งรูปภาพแห่งความทรงจำของคุณให้เราทาง LINE หรือ Instagram</p>
               <div className="aspect-square bg-surface-container-high rounded flex items-center justify-center overflow-hidden">
-                <img alt="Upload Preview" className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV7j7r8s-cW3nDi4BOMehaiFHJBBz-kGxONDK21iITog3NyR1EDweyfQ8EfkKImvQXCXoUOsZhYbYWgODDluZLmU-EWVhs6lzNvY7mxlGJ_kSWwf_UPcYMd_TTNz-rQx3wRB6CJUeT2yg985a2e1lOLGHsUg5BJdiqEw72LdUkvKKgbpOgcx_8ScZV5vpD-K_R4PhYrD_2nlKtVNgANdrny7pm8HiR5Ht_HNNDKvpo9m8xPqQPGgp00_TEzs-bryU22jiO7qWkiRR"
-                  referrerPolicy="no-referrer" />
+                                <img
+                  src={modelPng}
+                  alt="Your original photo"
+                  className="w-full h-full object-contain drop-shadow-2xl rounded-2xl"
+                />
               </div>
             </motion.div>
 
