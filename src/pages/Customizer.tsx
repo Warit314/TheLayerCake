@@ -123,13 +123,17 @@ export default function Customizer() {
 
             {/* Actions */}
             <div className="flex flex-col gap-3 pt-4">
-              <button className="w-full industrial-gradient text-white py-5 rounded-xl font-headline font-bold text-lg tracking-wide opacity-80 cursor-default flex items-center justify-center gap-2 shadow-md">
-                <ShoppingCart size={20} />
-                Add to Cart
-              </button>
-              <button className="w-full bg-surface-container-highest text-on-surface py-5 rounded-xl font-headline font-bold text-lg tracking-wide hover:bg-slate-300 transition-all">
-                Buy Now
-              </button>
+              <a 
+                href="https://lin.ee/ZI9D6E6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full industrial-gradient text-white py-5 rounded-xl font-headline font-bold text-lg tracking-wide flex items-center justify-center gap-3 shadow-md hover:scale-[1.02] transition-transform"
+              >
+                สั่งทำผ่าน LINE @thelayercake
+              </a>
+              <p className="text-center text-on-surface-variant text-xs font-medium uppercase tracking-widest px-4 leading-relaxed">
+                Chat to Order: ทักแชทเพื่อปรึกษาและส่งภาพของคุณให้เราทันที
+              </p>
             </div>
 
             {/* Trust Badges */}

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { UploadCloud, ArrowDown, Zap, ShieldCheck, Factory } from 'lucide-react';
+import { Zap, ShieldCheck } from 'lucide-react';
 import ThreeDView from '../components/ThreeDView';
 import SpinningModel from '../components/SpinningModel';
 import modelUrl from '../public/model.glb?url';
@@ -14,57 +14,72 @@ export default function ThreeDModel() {
           animate={{ opacity: 1, y: 0 }}
           className="text-5xl md:text-7xl font-bold font-headline text-center leading-[1.1] tracking-tighter max-w-5xl mx-auto"
         >
-          เปลี่ยนรูปภาพของคุณให้เป็น<span className="text-tertiary">นวัตกรรม 3 มิติ</span>
+          เปลี่ยนรูปภาพธรรมดา ให้เป็น<span className="text-tertiary">กรอบรูป 3 มิติเรืองแสง</span>
         </motion.h1>
       </div>
 
       {/* Split Hero Content */}
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        {/* Left Side: Upload Module */}
+        {/* Left Side: Product Store Area */}
         <div className="lg:col-span-5 space-y-8">
-          <div className="relative">
-            {/* Decor Arrow */}
-            <div className="absolute -top-12 left-10 flex flex-col items-center">
-              <span className="text-xs font-medium text-slate-400 mb-1">ภาพครอบครัวของคุณ</span>
-              <ArrowDown className="text-slate-300" size={16} />
+          <div className="bg-surface-container-lowest rounded-xl p-8 shadow-sm border border-outline-variant/15">
+            <div className="mb-6">
+              <span className="px-3 py-1 rounded-full bg-tertiary/10 text-tertiary text-xs font-bold uppercase tracking-widest mb-4 inline-block">
+                Limited Edition Bangkok Series
+              </span>
+              <h2 className="text-3xl font-bold font-headline mb-4 text-on-surface">
+                กรอบรูป 3 มิติเรืองแสง — ของขวัญชิ้นเดียวในโลก
+              </h2>
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-4xl font-black font-headline text-tertiary">฿1,290</span>
+                <span className="text-xl text-on-surface-variant line-through opacity-50">฿1,850</span>
+                <span className="text-xs font-bold bg-error/10 text-error px-2 py-0.5 rounded">PROMO</span>
+              </div>
             </div>
 
-            <div className="bg-surface-container-lowest rounded-xl p-8 shadow-sm border border-outline-variant/15">
-              <div className="aspect-video mb-6 rounded-lg overflow-hidden relative group cursor-pointer bg-surface-container-low border-2 border-dashed border-outline-variant hover:border-tertiary transition-colors">
-                <img
-                  alt="Thai family photo placeholder"
-                  className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8o_CVKepOsKgdpZYGzH9Rp8INJVYRMZNIPF9vKLl-v-GtI_bkh5-aUcqXFXyXPcGmjGOD3aWNsRdJlPG3kXVg-mfiq2j5zhptzXnUalGoBPe49E22pKBolRDdICL_0NfmDtFgVRhUOy7BNFtuqBIb1pXUdcEzdpU-OLoWI7xGCTv2oBvWhvwCB0C60oCRDG6R6-R-jrD0WkWkXgijMKw_XwIItZ0IB_Mjeoe2nld44Yq_k30xwfMMRrbCvUJiSAv1Q6GIn_PTPAsg"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-on-surface-variant">
-                  <UploadCloud className="mb-2" size={40} />
-                  <span className="text-sm font-medium">ลากไฟล์มาที่นี่ หรือ คลิกเพื่อเลือกภาพ</span>
+            <div className="space-y-6 mb-8">
+              <div className="space-y-3">
+                <label className="text-xs font-bold uppercase tracking-widest text-on-surface-variant flex items-center justify-between">
+                  <span>เลือกขนาดที่ต้องการ (Choose Your Size)</span>
+                  <span className="text-tertiary">Recommended</span>
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button className="border-2 border-outline-variant p-4 rounded-lg text-left hover:border-tertiary transition-colors group">
+                    <div className="font-bold text-sm mb-1 group-hover:text-tertiary transition-colors">10x15 cm</div>
+                    <div className="text-[10px] text-on-surface-variant">Compact Desktop</div>
+                  </button>
+                  <button className="border-2 border-tertiary p-4 rounded-lg text-left relative overflow-hidden bg-tertiary/5">
+                    <div className="font-bold text-sm mb-1 text-tertiary">15x20 cm</div>
+                    <div className="text-[10px] text-on-surface-variant">Premium Portrait</div>
+                    <div className="absolute top-0 right-0 bg-tertiary text-white text-[8px] px-2 py-0.5 rounded-bl font-bold uppercase tracking-tighter">Popular</div>
+                  </button>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <button className="w-full industrial-gradient text-white py-4 rounded-lg font-headline font-bold text-lg tracking-tight shadow-md opacity-80 cursor-default flex items-center justify-center gap-3">
-                  <UploadCloud size={20} />
-                  อัปโหลดภาพของคุณ
-                </button>
-                <p className="text-center text-on-surface-variant font-medium">เริ่มสร้างความทรงจำแบบ 3 มิติ</p>
+              <div className="p-4 bg-surface-container-low rounded-lg space-y-3">
+                <div className="flex items-center gap-3 text-sm text-on-surface font-medium">
+                  <Zap size={18} className="text-tertiary" />
+                  <span>ผลิตและจัดส่งภายใน 24 ชั่วโมง</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-on-surface font-medium">
+                  <ShieldCheck size={18} className="text-tertiary" />
+                  <span>ตรวจสอบพรีวิว 3 มิติก่อนผลิตจริง</span>
+                </div>
               </div>
+            </div>
 
-              <div className="mt-8 pt-8 border-t border-surface-container-high grid grid-cols-3 gap-4">
-                <div className="text-center">
-                  <span className="text-2xl font-bold font-headline block">24h</span>
-                  <span className="text-[10px] uppercase tracking-widest text-slate-400">Turnaround</span>
-                </div>
-                <div className="text-center border-x border-surface-container-high">
-                  <span className="text-2xl font-bold font-headline block">100%</span>
-                  <span className="text-[10px] uppercase tracking-widest text-slate-400">Precision</span>
-                </div>
-                <div className="text-center">
-                  <span className="text-2xl font-bold font-headline block">Global</span>
-                  <span className="text-[10px] uppercase tracking-widest text-slate-400">Shipping</span>
-                </div>
-              </div>
+            <div className="space-y-4">
+              <a 
+                href="https://lin.ee/ZI9D6E6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full industrial-gradient text-white py-5 rounded-lg font-headline font-bold text-lg tracking-tight shadow-md flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform"
+              >
+                สั่งทำผ่าน LINE @thelayercake
+              </a>
+              <p className="text-center text-on-surface-variant text-xs font-medium uppercase tracking-widest px-4 leading-relaxed">
+                Chat to Order: ทักแชทเพื่อปรึกษาและส่งภาพของคุณให้เราทันที
+              </p>
             </div>
           </div>
         </div>
@@ -109,48 +124,15 @@ export default function ThreeDModel() {
             <div className="p-6 bg-surface-container-lowest flex-grow flex flex-col justify-between">
               <div>
                 <span className="text-tertiary text-[10px] font-bold tracking-[0.2em] uppercase mb-2 block">Interactive</span>
-                <h3 className="text-xl font-bold font-headline mb-2">Live 3D Preview</h3>
+                <h3 className="text-xl font-bold font-headline mb-2">Interactive Live 3D Preview</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">
-                  สัมผัสประสบการณ์ชมผลงานแบบ 3 มิติได้ทันที หมุนและซูมดูรายละเอียดได้ทุกทิศทางก่อนการสั่งผลิต
+                  สบายใจก่อนสั่งทำ! ทีมงานจะส่งลิงก์จำลองผลงาน 3 มิติให้คุณหมุนและซูมดูรายละเอียดได้ทุกทิศทางก่อนเริ่มพิมพ์จริง
                 </p>
               </div>
             </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Bento Grid Feature Section */}
-      {/* <div className="max-w-7xl mx-auto px-6 mt-32">
-        <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[600px]">
-          <div className="md:col-span-2 md:row-span-2 bg-surface-container-low rounded-xl p-10 flex flex-col justify-end relative overflow-hidden">
-            <img
-              className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-20"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXDA41m_pDTIzy51wrOGZk_D2EMSn_hvNoR-7vsY-EF7WhmWuW2XJNYQ4wSczA0zW7troi-Ob2-xUsiv9jO8FeaDQXPiL980rfamjZdtx5zFcYcJySX08k6cgfPK3FPNdaU3OJ7sW1evDYierJCpjbbhQLJ8pmy08UV4yQjEZD6rhgXLpi7FqIzsQfx4dWOa6-OP0CXG3E9GZDQinxRH_qvDxfdxZeLyj7jLx6aPDV-8SEiQw-3-WUJd77HqnMQSRkatGQy6ciBWdq"
-              referrerPolicy="no-referrer"
-            />
-            <h2 className="text-3xl font-bold font-headline mb-4 relative z-10">Laboratory Grade Precision</h2>
-            <p className="text-on-surface-variant max-w-sm relative z-10">ทุกชิ้นงานผ่านการตรวจสอบคุณภาพระดับอุตสาหกรรมด้วยเครื่องพิมพ์รุ่นล่าสุดที่มีความแม่นยำระดับไมครอน</p>
-          </div>
-
-          <div className="md:col-span-2 bg-tertiary text-white rounded-xl p-8 flex items-center justify-between">
-            <div>
-              <h4 className="text-xl font-bold font-headline mb-1">Bangkok Facility</h4>
-              <p className="opacity-80 text-sm">การผลิตในไทย รวดเร็ว และไม่ต้องรอสินค้านาน</p>
-            </div>
-            <Factory className="opacity-40" size={48} />
-          </div>
-
-          <div className="bg-surface-container-high rounded-xl p-6 flex flex-col items-center justify-center text-center">
-            <Zap className="text-tertiary mb-3" size={40} />
-            <span className="font-headline font-bold">Express Build</span>
-          </div>
-
-          <div className="bg-surface-container-highest rounded-xl p-6 flex flex-col items-center justify-center text-center">
-            <ShieldCheck className="text-tertiary mb-3" size={40} />
-            <span className="font-headline font-bold">QA Certified</span>
-          </div>
-        </div>
-      </div> */}
     </main>
   );
 }

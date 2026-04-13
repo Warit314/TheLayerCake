@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Instagram, MessageCircle, ShoppingBag, ExternalLink } from 'lucide-react';
 
+
 export default function Contact() {
   const socialLinks = [
     {
@@ -9,7 +10,7 @@ export default function Contact() {
       description: 'Instant Support & Custom Orders',
       icon: <MessageCircle size={32} />,
       color: 'bg-[#06C755]',
-      link: '#', // Placeholder
+      link: 'https://lin.ee/ZI9D6E6',
     },
     {
       name: 'INSTAGRAM',

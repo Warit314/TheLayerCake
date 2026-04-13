@@ -1,5 +1,6 @@
 import logo from '../public/image.png';
 
+
 const navItems = [
   { label: 'Home', href: '#home' },
   { label: '3D Model', href: '#threedmodel' },
@@ -49,9 +50,14 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <button className="industrial-gradient text-white px-6 py-2 rounded-md font-headline text-sm font-bold opacity-80 cursor-default">
-            Start Build
-          </button>
+          <a 
+            href="https://lin.ee/ZI9D6E6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="industrial-gradient text-white px-6 py-2 rounded-md font-headline text-sm font-bold opacity-80 flex items-center justify-center hover:scale-[1.05] transition-transform"
+          >
+            Chat With Us
+          </a>
           <div className="w-10 h-10 rounded-full border border-outline-variant/30 overflow-hidden bg-slate-200">
             <img
               alt="User profile"
