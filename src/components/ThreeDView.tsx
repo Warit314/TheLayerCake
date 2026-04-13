@@ -5,9 +5,11 @@ import { motion } from 'motion/react';
 
 interface ThreeDViewProps {
   children: React.ReactNode;
+  /** If true, disables all mouse/touch controls so page scroll isn't captured */
+  passive?: boolean;
 }
 
-export default function ThreeDView({ children }: ThreeDViewProps) {
+export default function ThreeDView({ children, passive = false }: ThreeDViewProps) {
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -23,18 +25,23 @@ export default function ThreeDView({ children }: ThreeDViewProps) {
             {children}
           </Stage>
         </Suspense>
-        <OrbitControls 
-          enablePan={false} 
-          enableZoom={true} 
+        <OrbitControls
+          enablePan={false}
+          enableZoom={passive ? false : true}
+          enableRotate={passive ? false : true}
+          enableDamping={!passive}
           minDistance={2}
           maxDistance={10}
-          autoRotate={false}
+          autoRotate={passive}          /* auto-spin when user can't drag */
+          autoRotateSpeed={1.2}
         />
       </Canvas>
 
-      <div className="absolute bottom-4 right-4 z-10 text-[10px] text-on-surface-variant/30 font-medium">
-        Drag to rotate • Scroll to zoom
-      </div>
+      {!passive && (
+        <div className="absolute bottom-4 right-4 z-10 text-[10px] text-on-surface-variant/30 font-medium">
+          Drag to rotate • Scroll to zoom
+        </div>
+      )}
     </motion.div>
   );
 }
