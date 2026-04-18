@@ -3,8 +3,9 @@ import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { Upload, Brain, Factory, CheckCircle2 } from 'lucide-react';
 import ThreeDView from '../components/ThreeDView';
 import SpinningModel from '../components/SpinningModel';
-import modelUrl from '../public/model-optimized.glb?url';
+import modelUrl from '../public/model.glb?url';
 import modelPng from '../public/model.png';
+import previewImg from '../public/preview.png';
 
 export default function Home() {
   const sentinelRef = useRef<HTMLDivElement>(null);
@@ -120,9 +121,9 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              {/* Layer 2 – 3D model (fades in, scales up) */}
+              {/* Layer 2 – 3D model (fades in) */}
               <motion.div
-                style={{ opacity: modelOpacity, scale: modelScale }}
+                style={{ opacity: modelOpacity }}
                 className="absolute inset-0"
               >
                 <ThreeDView passive>
@@ -132,7 +133,7 @@ export default function Home() {
                   style={{ opacity: modelOpacity }}
                   className="absolute bottom-4 left-4 bg-tertiary/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-white shadow"
                 >
-                  ✨ Your 3D Print
+                  ✨ Your 3D Printed Model
                 </motion.div>
               </motion.div>
 
@@ -164,11 +165,11 @@ export default function Home() {
                 <span className="font-headline font-bold text-on-surface">1. ส่งภาพให้เรา (Send Your Photo)</span>
               </div>
               <p className="text-sm text-on-surface-variant mb-6">ทักแชทส่งรูปภาพแห่งความทรงจำของคุณให้เราทาง LINE หรือ Instagram</p>
-              <div className="aspect-square bg-surface-container-high rounded flex items-center justify-center overflow-hidden">
-                                <img
+              <div className="aspect-square bg-surface-container-high rounded-xl flex items-center justify-center overflow-hidden p-6">
+                <img
                   src={modelPng}
                   alt="Your original photo"
-                  className="w-full h-full object-contain drop-shadow-2xl rounded-2xl"
+                  className="w-full h-full object-contain drop-shadow-2xl"
                 />
               </div>
             </motion.div>
@@ -182,12 +183,15 @@ export default function Home() {
                 <span className="font-headline font-bold text-on-surface">2. ตรวจสอบแบบ 3 มิติ (Live 3D Preview)</span>
               </div>
               <p className="text-sm text-on-surface-variant mb-6">เราจะส่งพรีวิว 3 มิติให้คุณหมุนดูรายละเอียดได้ 360 องศาก่อนสั่งผลิต</p>
-              <div className="aspect-square bg-slate-900 rounded flex flex-col items-center justify-center p-8 relative">
-                <img alt="AI Mesh Generation" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(0,209,255,0.4)]"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5_6BDvDTl_7PdPshbrTdY7bMfAuLly1pgJTNFLyaLV_CeDIfCIdsLy-UA06mcN8lUgt1rPyYz26ocVXqazhNIUBxPX5ShapV3nC9_BWf8LW9LTZSP1qMHZGkqn42VoWtT0dbT2SsxZw4waGIHx48T27eeSVfdcqPkVv0usWkEEf3m8LiV897HUBJG6jVSGVnWLWzx3QBv1mDHKKQF572Pd2pJOQK0rkynCDkfJ17oCZg8c-t8-iqP4pWrVohA7U-T6AhvZJlRrSGq"
-                  referrerPolicy="no-referrer" />
+              <div className="aspect-square bg-surface-container-high rounded-xl flex items-center justify-center overflow-hidden p-6">
+                <img
+                  src={previewImg}
+                  alt="AI Mesh Generation"
+                  className="w-full h-full object-contain drop-shadow-2xl"
+                  referrerPolicy="no-referrer"
+                />
               </div>
-            </motion.div>
+            </motion.div> 
 
             {/* Step 3 */}
             <motion.div whileHover={{ y: -5 }} className="relative z-10 bg-surface-container-lowest p-6 rounded-lg shadow-sm">
@@ -198,10 +202,13 @@ export default function Home() {
                 <span className="font-headline font-bold text-on-surface">3. รับของขวัญสุดพิเศษ (Delivered to You)</span>
               </div>
               <p className="text-sm text-on-surface-variant mb-6">รับชิ้นงาน 3 มิติสีสดใส พร้อมส่งตรงถึงหน้าบ้านคุณ</p>
-              <div className="aspect-square bg-surface-container-high rounded flex items-center justify-center overflow-hidden p-6">
-                <img alt="Physical Print Result" className="w-full h-full object-contain drop-shadow-2xl"
+              <div className="aspect-square bg-surface-container-high rounded-xl flex items-center justify-center overflow-hidden p-6">
+                <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuD18StDSEc8eTkLooBBPCTJY8LB08kb9o3Jg8tC8fCNYqcsaJJ2V3nYKxLm9WXTN8LjVBRRe8nnruxqeuQ4Cd6jom9a0R8i_IV-n4q4B0I1bLXuM2HH7N1u05kd3X_9Ry5C94eyARLQzgCTlQViUoDY25RDa2yMi5f3XTPJhCJBwmbQF5Li3ZL9EfrOfHb-aW94cjvN2Ti827E9ubRwZhRufvjMr5OlEc_VvGHZeeVjcpIBoFBBlZh4LPfTbxp94JCJDyftL_O9uegx"
-                  referrerPolicy="no-referrer" />
+                  alt="Physical Print Result"
+                  className="w-full h-full object-contain drop-shadow-2xl"
+                  referrerPolicy="no-referrer"
+                />
               </div>
             </motion.div>
           </div>
@@ -219,10 +226,6 @@ export default function Home() {
           >
             ทัก LINE เพื่อสั่งทำทันที / Order via LINE
           </motion.a>
-          <div className="flex items-center gap-4 text-secondary font-sans text-sm uppercase tracking-widest leading-none">
-            <CheckCircle2 className="text-tertiary" size={18} fill="currentColor" />
-            Precision Guarantee: 0.01mm Tolerance
-          </div>
         </div>
 
       </div>

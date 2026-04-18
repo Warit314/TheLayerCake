@@ -6,19 +6,12 @@ import {
   Truck, 
   ShieldCheck, 
   ChevronDown, 
-  Image as ImageIcon,
-  ChevronsUpDown
+  Image as ImageIcon
 } from 'lucide-react';
 
 export default function Customizer() {
-  const [sliderPos, setSliderPos] = useState(50);
+  const [isLightOn, setIsLightOn] = useState(false);
   const [size, setSize] = useState('10x15');
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    setSliderPos(Math.min(Math.max(x, 0), 100));
-  };
 
   return (
     <main className="pt-24 pb-16 px-4 md:px-8 max-w-screen-2xl mx-auto">
@@ -26,51 +19,50 @@ export default function Customizer() {
       <div className="flex flex-col lg:flex-row gap-12 mb-20">
         {/* 60% Left: Interactive Photo */}
         <div className="lg:w-[60%] relative group">
-          <div 
-            className="sticky top-28 bg-surface-container-low overflow-hidden rounded-xl aspect-[4/3] shadow-sm cursor-ew-resize"
-            onMouseMove={handleMouseMove}
-            onTouchMove={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              const x = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
-              setSliderPos(Math.min(Math.max(x, 0), 100));
-            }}
-          >
-            {/* Base Image (The Result) */}
+          <div className="sticky top-28 bg-surface-container-low overflow-hidden rounded-xl aspect-[4/3] shadow-sm relative">
+            {/* Base Image (Light OFF - Textured Plastic) */}
+            <div className="absolute inset-0 w-full h-full bg-slate-900 flex items-center justify-center">
+              <img 
+                alt="Textured Plastic Model" 
+                className={`w-full h-full object-cover transition-opacity duration-700 ease-in-out ${isLightOn ? 'opacity-0' : 'opacity-80 mix-blend-screen'}`} 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAF_TZ7vAsVh5q-oDrmWFb4MeUx7FRgYbRy-uroo7OUIBStw4TY21BgNxz7C4Wxrty9rsoXFju1i7iHNa7qZJO0N-W8Zm-pa9yvBF_8X7nF3ktqowYlhkrvsjPJK4rkbJv3RHFaU8dpjpOr49lr5rGjphwQP7KEFILz8D6alcvpoPjK5HgwceHWBSNpib6mQLlqCMP7AqNh_tbhSnL_3j7D8VzauOnK0AlVh0iB70tdwOdq7h8Ecw9YsMwTGeiWs2LM9C5teyQd4rP"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+
+            {/* Light ON Image (Backlit CMYK) */}
             <img 
               alt="CMYK Lithophane of Wat Arun Sunset" 
-              className="absolute inset-0 w-full h-full object-cover" 
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${isLightOn ? 'opacity-100' : 'opacity-0'}`} 
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkvqEBW30Nxuki9CGGiJrIIlP1kzzAvSZyjmbfBSqp8klgUPFAAK3A4cPfOiEXyfC2J_0Cq4dj0mIVLbW0qereSX8-vmxg-eDfhs225cpCMxKXVbUd8jibIhSzLzQHfM7746Zk6vKZt7-U7gEgbaNHeX6jCyjjCLVRBKM0j24Z9DgHSoy0Al0mWYOWm6O0_dnnuvuLwUli7h2bP9zjOa7lhWsu3ytFFbV5cIsuBDuUlvXbPLzTQQqamcDy_W5ZvLSvOGiLU27GIUZG"
               referrerPolicy="no-referrer"
             />
             
-            {/* Overlay Slider (Simulated Before View) */}
-            <div 
-              className="absolute inset-0 overflow-hidden border-r-4 border-cyan-400 transition-all duration-100 ease-out"
-              style={{ width: `${sliderPos}%` }}
-            >
-              <img 
-                alt="3D Printed Texture" 
-                className="w-[200%] max-w-none h-full object-cover opacity-80 mix-blend-multiply" 
-                style={{ width: `${10000 / sliderPos}%` }}
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAF_TZ7vAsVh5q-oDrmWFb4MeUx7FRgYbRy-uroo7OUIBStw4TY21BgNxz7C4Wxrty9rsoXFju1i7iHNa7qZJO0N-W8Zm-pa9yvBF_8X7nF3ktqowYlhkrvsjPJK4rkbJv3RHFaU8dpjpOr49lr5rGjphwQP7KEFILz8D6alcvpoPjK5HgwceHWBSNpib6mQLlqCMP7AqNh_tbhSnL_3j7D8VzauOnK0AlVh0iB70tdwOdq7h8Ecw9YsMwTGeiWs2LM9C5teyQd4rP"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute bottom-6 left-6 bg-white/90 px-4 py-2 rounded-lg backdrop-blur-sm shadow-lg">
-                <p className="text-xs font-bold uppercase tracking-widest text-primary">Textured Plastic</p>
-              </div>
+            {/* Status Label */}
+            <div className={`absolute top-4 left-4 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm transition-colors duration-500 flex items-center gap-2 ${isLightOn ? 'bg-cyan-400/90 text-white' : 'bg-surface-container-highest/90 text-on-surface'}`}>
+              <div className={`w-2 h-2 rounded-full ${isLightOn ? 'bg-white animate-pulse' : 'bg-slate-400'}`}></div>
+              <p className="text-[10px] font-bold uppercase tracking-widest">
+                {isLightOn ? 'Light ON: Backlit CMYK' : 'Light OFF: Textured Plastic'}
+              </p>
             </div>
-            
-            {/* Label for the Result side */}
-            <div className="absolute bottom-6 right-6 bg-cyan-400/90 px-4 py-2 rounded-lg backdrop-blur-sm shadow-lg">
-              <p className="text-xs font-bold uppercase tracking-widest text-white">Vibrant Backlit CMYK</p>
-            </div>
-            
-            {/* Interaction Hint */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/50 animate-pulse">
-                <ChevronsUpDown className="text-white" />
-              </div>
-              <p className="text-white text-[10px] mt-2 font-headline tracking-[0.2em] uppercase drop-shadow-md">Hover to Reveal</p>
+
+            {/* Toggle Switch UI */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-surface-container-lowest/80 backdrop-blur-md px-5 py-3 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-outline-variant/30">
+              <span className={`text-[10px] font-bold uppercase tracking-widest transition-colors ${!isLightOn ? 'text-on-surface' : 'text-on-surface-variant/50'}`}>
+                Light Off
+              </span>
+              
+              <button 
+                onClick={() => setIsLightOn(!isLightOn)}
+                className={`relative w-16 h-8 rounded-full transition-colors duration-500 outline-none focus:ring-4 focus:ring-tertiary/30 ${isLightOn ? 'bg-cyan-400' : 'bg-surface-container-highest'}`}
+                aria-label="Toggle Light"
+              >
+                <div className={`absolute top-1 left-1 bg-white w-6 h-6 rounded-full shadow-md transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isLightOn ? 'translate-x-8' : 'translate-x-0'}`}></div>
+              </button>
+              
+              <span className={`text-[10px] font-bold uppercase tracking-widest transition-colors ${isLightOn ? 'text-cyan-600' : 'text-on-surface-variant/50'}`}>
+                Light On
+              </span>
             </div>
           </div>
         </div>
@@ -111,15 +103,6 @@ export default function Customizer() {
               </div>
             </div>
 
-            {/* Upload Button */}
-            <div>
-              <label className="block text-sm font-bold text-on-surface-variant mb-4 uppercase tracking-tighter">อัปโหลดภาพ (Upload Image)</label>
-              <div className="border-2 border-dashed border-outline-variant rounded-xl p-8 text-center bg-surface-container-low hover:bg-surface-container-high transition-colors cursor-pointer group">
-                <ImageIcon className="mx-auto text-4xl text-slate-400 mb-3 group-hover:text-tertiary transition-colors" size={40} />
-                <p className="text-on-surface font-medium">ลากไฟล์มาที่นี่ หรือคลิกเพื่อเลือกรูปภาพ</p>
-                <p className="text-xs text-secondary mt-1">ไฟล์ JPG, PNG (แนะนำ 300 DPI)</p>
-              </div>
-            </div>
 
             {/* Actions */}
             <div className="flex flex-col gap-3 pt-4">

@@ -44,7 +44,7 @@ export default function SpinningModel({ modelUrl }: SpinningModelProps) {
     box.getSize(size);
 
     const maxDim = Math.max(size.x, size.y, size.z);
-    const scale = 3 / maxDim;
+    const scale = 3.5 / maxDim; 
 
     const center = new THREE.Vector3();
     box.getCenter(center);
@@ -59,8 +59,8 @@ export default function SpinningModel({ modelUrl }: SpinningModelProps) {
   // Slowly rotate the model and add bobbing motion
   useFrame((state) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += 0.005;
-      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
+      groupRef.current.rotation.y += 0.004;
+      // groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
     }
   });
 
